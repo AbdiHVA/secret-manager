@@ -6,6 +6,8 @@ import secrets as secrets_module
 from cryptography.fernet import Fernet
 import base64
 
+
+
 # Create blueprint
 secrets = Blueprint('secrets', __name__, url_prefix='/secrets')
 
