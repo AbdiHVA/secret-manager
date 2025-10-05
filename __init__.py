@@ -1,4 +1,5 @@
 import secrets
+import os
 from flask import Flask
 from home import home
 from secrets_manager import secrets as secrets_bp
@@ -13,6 +14,9 @@ def create_app():
     
     return app
 
+# Create the app instance for gunicorn
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
